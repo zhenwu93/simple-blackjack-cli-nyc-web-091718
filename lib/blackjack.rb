@@ -3,8 +3,7 @@ def welcome
 end
 
 def deal_card
-  card =  1 + rand(11)
-  return card
+  card = rand(1..11)
 end
 
 def display_card_total(card_total)
@@ -17,7 +16,6 @@ end
 
 def get_user_input
   user_input = gets.chomp
-  return user_input
 end
 
 def end_game(card_total)
@@ -28,15 +26,26 @@ def initial_round
   card1 = deal_card
   card2 = deal_card
   sum = card1 + card2
+  display_card_total(sum)
   return sum
 end
 
-def hit?
-  # code hit? here
+def hit?(card_total)
+  prompt_user
+  input = get_user_input
+  if input == "h"
+    card_total += deal_card
+  elsif input == "s"
+    card_total
+  else
+    invalid_command
+  end
 end
 
 def invalid_command
-  # code invalid_command here
+  puts "Please enter a valid command"
+  prompt_user
+  get_user_input
 end
 
 #####################################################
@@ -44,5 +53,11 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  card_total = initial_round
+  until card_total > 21
+  card_total = hit?(card_total)
+  display_card_total(card_total)
+    end
+  end_game(card_total)
 end
