@@ -35,7 +35,7 @@ end
 def hit?(total)
   prompt_user
   input = get_user_input
-  if input == "h"
+  if input == "h" do
     new_card = deal_card
     new_total = total + new_card
     return "#{new_total}"
