@@ -23,11 +23,8 @@ def end_game(card_total)
 end
 
 def initial_round
-  card1 = deal_card
-  card2 = deal_card
-  sum = card1 + card2
+  sum = rand(1..11) + rand(1..11)
   display_card_total(sum)
-  return sum
 end
 
 def hit?(card_total)
