@@ -38,7 +38,7 @@ def hit?(total)
   if input == "h"
     new_card = deal_card
     total = total + new_card
-    puts "#{total}"
+    return "#{total}"
   end
 end
 
